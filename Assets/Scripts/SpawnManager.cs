@@ -8,24 +8,35 @@ public class SpawnManager : MonoBehaviour
     private Vector3 _spawnPos = new Vector3(25, 0, 0);
     [SerializeField] private float timeSpawn;
     private float _timer;
+    private PlayerController _playerController;
+
+    private void Start()
+    {
+        _playerController = FindObjectOfType<PlayerController>();
+    }
+
     void Update()
     {
-        if (_timer <= 0)
+        if (!_playerController.GameOver)
         {
-            SpawnDanger();
-            _timer += timeSpawn;
-        }
-        else
-        {
-            _timer -= Time.deltaTime;
+            if (_timer <= 0)
+            {
+                SpawnDanger();
+                _timer += timeSpawn;
+            }
+            else
+            {
+                _timer -= Time.deltaTime;
+            }
         }
     }
 
+
     private void SpawnDanger()
     {
-        var i = Random.Range(0,obstaclePrefab.Length);
+        var i = Random.Range(0, obstaclePrefab.Length);
         var obj = obstaclePrefab[i];
         _spawnPos = new Vector3(25, 5, 0);
-        Instantiate(obj, _spawnPos, Quaternion.identity,transform);
+        Instantiate(obj, _spawnPos, Quaternion.identity, transform);
     }
 }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4609449380602079700}
   m_Layer: 0
   m_Name: Prob_Rock_Boulder_01
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
